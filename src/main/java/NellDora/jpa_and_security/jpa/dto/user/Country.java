@@ -1,4 +1,4 @@
-package NellDora.jpa_and_security.dto;
+package NellDora.jpa_and_security.jpa.dto.user;
 
 public enum Country {
     KOREA,
