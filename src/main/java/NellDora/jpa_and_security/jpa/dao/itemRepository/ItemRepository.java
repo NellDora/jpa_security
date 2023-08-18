@@ -1,5 +1,6 @@
 package NellDora.jpa_and_security.jpa.dao.itemRepository;
 
+import NellDora.jpa_and_security.jpa.dao.userRepository.UpdateItemParam;
 import NellDora.jpa_and_security.jpa.dto.item.Item;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -21,14 +22,21 @@ public class ItemRepository {
         return item;
     }
 
-    public void update(Item item){
+    public void update(Long itemId, UpdateItemParam updateParam){
+        Item findItem = manager.find(Item.class,itemId);
+        findItem.setItemName(updateParam.getItemName());
+        findItem.setPrice(updateParam.getPrice());
+        findItem.setQuantity(updateParam.getQuantity());
+        findItem.setCondition(updateParam.getCondition());
 
+        //이게 끝임 JPA는 추가로 다시 저장 할 필요 없다
+        // ->그 이유는 자동 추적해서 파악하기 때문
     }
 
-    public Item find(Long id){
-        Item item = manager.find(Item.class,id);
-        return item;
+    public Item findById(Long itemId){
+        return manager.find(Item.class,itemId);
     }
+
     public List<Item> findBySearch(String name){
         String searchQL ="select t from Item t where t.itemName like concat('%', :itemName,'%')";
         TypedQuery<Item> query = manager.createQuery(searchQL, Item.class);

@@ -16,6 +16,8 @@ public class UserRepository {
 
      //JPA는 트랜잭션 안에서 동작함.
     public User save(User user){
+        user.setLevel(1);
+        user.setEXP(0);
         manager.persist(user);
         return user;
     }
@@ -27,6 +29,12 @@ public class UserRepository {
     public User findById(String id){
         User user =manager.find(User.class,id);
         return user;
+    }
+
+    public User update(String id,User user){
+        User findUser = manager.find(User.class,id);
+        return null;
+
     }
 
 }

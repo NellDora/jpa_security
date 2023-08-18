@@ -34,6 +34,12 @@ public class User {
     private Country country;
     //DB에 따로 나라별 유저 테이블 등록을 위해
 
+    @Column(name="level")
+    private int Level;
+
+    @Column(name="exp")
+    private int EXP;
+
 
     
     /*

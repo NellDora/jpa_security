@@ -19,7 +19,7 @@ public class ItemService {
     }
 
     public Item find(Long id){
-        return itemRepository.find(id);
+        return itemRepository.findById(id);
     }
 
     public List<Item> findBySearchName(String name){

@@ -19,6 +19,8 @@ public class Item {
 
     private long price;
 
+    private int quantity;
+
     @Column(name="user_id")
     private String user_id;
 
@@ -26,9 +28,10 @@ public class Item {
     @Column(name = "item_condition")
     private Condition condition;
 
-    public Item(String itemName, long price, String user_id, Condition condition) {
+    public Item(String itemName, long price,int quantity, String user_id, Condition condition) {
         this.itemName = itemName;
         this.price = price;
+        this.quantity = quantity;
         this.user_id = user_id;
         this.condition = condition;
     }
