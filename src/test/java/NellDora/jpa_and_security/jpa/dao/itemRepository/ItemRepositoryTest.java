@@ -19,8 +19,5 @@ class ItemRepositoryTest {
     @Autowired
     private ItemRepository itemRepository;
 
-    @Test
-    void updateTest() {
 
-    }
 }

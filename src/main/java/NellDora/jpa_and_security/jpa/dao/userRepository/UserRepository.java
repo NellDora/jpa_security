@@ -22,8 +22,12 @@ public class UserRepository {
         return user;
     }
 
-    public void delete(User user){ //말그대로 삭제 기능인데 remove시 Entity 객체를 넘겨주고 삭제
-        manager.remove(user); // ->등록한 @ID를 넘겨서 삭제함
+    public void delete(String userId){ //말그대로 삭제 기능인데 remove시 Entity 객체를 넘겨주고 삭제이지만
+
+        User findUser = manager.find(User.class, userId);
+        //삭제 이전에 삭제 대상 엔티티를 조회해야 가능
+
+        manager.remove(findUser); //
     }
 
     public User findById(String id){

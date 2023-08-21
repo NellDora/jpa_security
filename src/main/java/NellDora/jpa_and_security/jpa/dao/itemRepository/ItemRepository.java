@@ -50,4 +50,12 @@ public class ItemRepository {
 
         return items;
     }
+
+    public void delete (Long itemId){
+        Item findItem = manager.find(Item.class,itemId);
+        //삭제기능 (remove)를 쓰기 위해서 먼저 find로 컨텍스트로 가져와야한다.
+        
+        manager.remove(findItem);
+        //이후 commit과 동시에 삭제
+    }
 }

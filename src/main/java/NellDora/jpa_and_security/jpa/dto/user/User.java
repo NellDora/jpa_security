@@ -27,12 +27,10 @@ public class User {
     @Enumerated(EnumType.STRING) //DB에 ENUM 명으로 저장
     private Gender gender;
 
-    //@ManyToMany
-    //@JoinColumn(name="COUNTRY_ID")
-    @Column(name = "country_id")
-    @Enumerated(EnumType.STRING)
+    @ManyToOne
+    @JoinColumn(name="country_id")
     private Country country;
-    //DB에 따로 나라별 유저 테이블 등록을 위해
+    //연관관계 등록
 
     @Column(name="level")
     private int Level;
@@ -48,11 +46,14 @@ public class User {
      [@ManyToOne 이랑 @JoinColumn은 한쌍으로 다닌다고 봐야하는듯
      */
 
-    public User(String userId, String userName, int age, Gender gender, Country country) {
+    public User(String userId, String userName, int age, Gender gender) {
         this.UserId = userId;
         this.userName = userName;
         this.age = age;
         this.gender = gender;
-        this.country = country;
+    }
+
+    public void setCountry(Country country){
+        this.country=country;
     }
 }
