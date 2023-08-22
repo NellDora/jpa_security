@@ -1,12 +1,14 @@
 package NellDora.jpa_and_security.jpa.dto.user;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity//JPA 사용하기 위해 필요한 어노테이션. Entuty가 붙은 클래스는 JPA가 관리한다.
 @Table(name="user") //앤티티와 연결할 DB 테이블을 지정하는 어노테이션
 @Data
+@NoArgsConstructor
 public class User {
 
     //@Id

@@ -12,7 +12,7 @@ import java.util.List;
 public class Country {
 
     @Id
-    @Column(name = "country_id")
+    @Column(name = "id")
     private int id;
 
     @Column(name = "country_name")
@@ -20,10 +20,20 @@ public class Country {
 
     //연관관계에 있는 (ManyToOne)쪽에서 매핑한 이름값 지정
     @OneToMany(mappedBy ="country")
-    @Column(name="user_list")
     private List<User> userList = new ArrayList<User>();
+    //DB상의 추가 작업 필요 X.
+    //자바코드만으로 구현
+    
+    public List<User> getUserList() {
+        return userList;
+    }
+
 
     public Country() {
+    }
+
+    public Country(String name) {
+        this.name = name;
     }
 
     public Country(int id, String name) {
