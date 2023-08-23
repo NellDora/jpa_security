@@ -62,8 +62,8 @@ public class TestConfig2 {
             manager.persist(user4);
             manager.persist(user5);
     }
-        @Transactional
-        @Bean
+        //@Transactional
+        //@Bean
         public void ManyToOneTest2() {
             User findUser = manager.find(User.class,"Venom");
             Country findCountry = findUser.getCountry();
@@ -80,4 +80,6 @@ public class TestConfig2 {
             }
 
    }
+
+
 }

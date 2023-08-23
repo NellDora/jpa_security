@@ -3,6 +3,7 @@ package NellDora.jpa_and_security.jpa.dao.itemRepository;
 import NellDora.jpa_and_security.jpa.dao.userRepository.UpdateItemParam;
 import NellDora.jpa_and_security.jpa.dto.item.Item;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -50,6 +51,24 @@ public class ItemRepository {
 
         return items;
     }
+
+    // 바로 위 메소드 findBySearch의 문제점. -> itemName이 Null이면? 출력에 문제가 생김
+
+
+    public List<Item> findBySearchV2(String name){
+        String jpql = "select t from Item t";
+        if(name!=null){
+            jpql += " where t.itemName like concat('%', :itemName,'%')";
+        }
+        TypedQuery<Item> query = manager.createQuery(jpql,Item.class);
+        if(name!=null){
+            query.setParameter("itemName" , name);
+        }
+        List<Item> items = query.getResultList();
+        return items;
+        // 위 코드로 정상동작
+    }
+
 
     public void delete (Long itemId){
         Item findItem = manager.find(Item.class,itemId);

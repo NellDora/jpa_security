@@ -91,5 +91,21 @@ public class TestConfig {
         log.info("업데이트 전 판매 상태 = {}",updateItem.getCondition());
    }
 
+    //@Transactional
+    //@Bean
+    public void searchTestV2() {
+        List<Item> items = new ArrayList<>(itemRepository.findBySearch(null));
+        for (Item item : items) {
+            System.out.println(item.getItemName());
+        }
+    }// null일 경우 출력이 되지 않음
 
+
+    @Bean
+    public void searchTestV3(){
+        List<Item> items = new ArrayList<>(itemRepository.findBySearchV2(null));
+        for (Item item: items){
+            System.out.println(item.getItemName());
+        }
+    }//결과는 성공적 -> null이어도 정상동작
 }
