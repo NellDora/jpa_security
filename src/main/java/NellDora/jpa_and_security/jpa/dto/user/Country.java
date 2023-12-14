@@ -12,7 +12,7 @@ import java.util.List;
 public class Country {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "country_id")
     private int id;
 
     @Column(name = "country_name")
