@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
-public class UrlFilterSecurityConfig implements FilterInvocationSecurityMetadataSource {
+public class UrlFilterInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 
     private LinkedHashMap<RequestMatcher, List<ConfigAttribute>> requestMap = new LinkedHashMap<>();
 
@@ -23,6 +24,15 @@ public class UrlFilterSecurityConfig implements FilterInvocationSecurityMetadata
 
         //FilterInvocation Spring Security에서 HTTP 요청을 캡슐화 하는 클래스
         HttpServletRequest request = ((FilterInvocation) object).getRequest();
+
+        if(requestMap != null){
+            for(Map.Entry<RequestMatcher, List<ConfigAttribute>> entry : requestMap.entrySet()){
+                RequestMatcher matcher = entry.getKey();
+                if(matcher.matches(request)){
+                    return entry.getValue();
+                }
+            }
+        }
 
 
         return null;
