@@ -1,0 +1,47 @@
+package NellDora.jpa_and_security.jpa.dto.item;
+
+import static com.querydsl.core.types.PathMetadataFactory.*;
+
+import com.querydsl.core.types.dsl.*;
+
+import com.querydsl.core.types.PathMetadata;
+import javax.annotation.processing.Generated;
+import com.querydsl.core.types.Path;
+
+
+/**
+ * QItem is a Querydsl query type for Item
+ */
+@Generated("com.querydsl.codegen.DefaultEntitySerializer")
+public class QItem extends EntityPathBase<Item> {
+
+    private static final long serialVersionUID = 76777735L;
+
+    public static final QItem item = new QItem("item");
+
+    public final EnumPath<Condition> condition = createEnum("condition", Condition.class);
+
+    public final NumberPath<Long> itemID = createNumber("itemID", Long.class);
+
+    public final StringPath itemName = createString("itemName");
+
+    public final NumberPath<Long> price = createNumber("price", Long.class);
+
+    public final NumberPath<Integer> quantity = createNumber("quantity", Integer.class);
+
+    public final StringPath user_id = createString("user_id");
+
+    public QItem(String variable) {
+        super(Item.class, forVariable(variable));
+    }
+
+    public QItem(Path<? extends Item> path) {
+        super(path.getType(), path.getMetadata());
+    }
+
+    public QItem(PathMetadata metadata) {
+        super(Item.class, metadata);
+    }
+
+}
+

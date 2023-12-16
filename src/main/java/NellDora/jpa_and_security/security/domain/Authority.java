@@ -20,5 +20,5 @@ public class Authority {
 
     @ManyToOne
     @JoinColumn(name = "user")
-    private User user;
+    private Member member;
 }
