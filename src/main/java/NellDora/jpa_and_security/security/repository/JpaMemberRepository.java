@@ -26,5 +26,8 @@ public class JpaMemberRepository implements MemberRepository {
         em.persist(member);
     }
 
-
+    @Override
+    public Member findById(String memberId) {
+        return em.find(Member.class, memberId);
+    }
 }

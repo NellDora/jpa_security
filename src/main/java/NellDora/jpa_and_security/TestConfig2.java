@@ -23,8 +23,8 @@ public class TestConfig2 {
 
 
     //양방향 연관관계 테스트
-        @Transactional
-        @Bean
+        //@Transactional
+        //@Bean
         public void ManyToOneTest() {
             Country country1 = new Country(101,"KOREA");
             Country country2 = new Country(201, "AMERICA");

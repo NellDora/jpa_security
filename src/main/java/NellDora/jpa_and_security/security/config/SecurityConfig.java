@@ -27,6 +27,8 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain HttpConfig(HttpSecurity http) throws Exception {
+
+
 /*
         http
                 .addFilterBefore(myFilterSecurityInterceptor(), FilterSecurityInterceptor.class);

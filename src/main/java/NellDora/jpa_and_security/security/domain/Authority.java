@@ -16,7 +16,7 @@ public class Authority {
 
     @ManyToOne
     @JoinColumn(name = "url")
-    private String url;
+    private Url url;
 
     @ManyToOne
     @JoinColumn(name = "user")

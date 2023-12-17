@@ -26,7 +26,7 @@ public class QAuthority extends EntityPathBase<Authority> {
 
     public final NumberPath<Integer> num = createNumber("num", Integer.class);
 
-    public final StringPath url = createString("url");
+    public final QUrl url;
 
     public QAuthority(String variable) {
         this(Authority.class, forVariable(variable), INITS);
@@ -47,6 +47,7 @@ public class QAuthority extends EntityPathBase<Authority> {
     public QAuthority(Class<? extends Authority> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.member = inits.isInitialized("member") ? new QMember(forProperty("member")) : null;
+        this.url = inits.isInitialized("url") ? new QUrl(forProperty("url")) : null;
     }
 
 }

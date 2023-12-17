@@ -23,7 +23,7 @@ public class Member {
     @Column(name = "department")
     private String department;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "member")
     List<Authority>authorities = new ArrayList<>();
 
 }
