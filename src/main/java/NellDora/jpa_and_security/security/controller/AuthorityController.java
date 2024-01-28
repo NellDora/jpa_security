@@ -22,10 +22,10 @@ public class AuthorityController {
         return null;
     }
 
-    @PostMapping("/auth")
-    public String AuthorityMemberPOST(@ModelAttribute("authDTO")){
-
-        return null;
-    }
+//    @PostMapping("/auth")
+//    public String AuthorityMemberPOST(@ModelAttribute("authDTO")){
+//
+//        return null;
+//    }
 
 }

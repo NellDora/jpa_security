@@ -34,6 +34,8 @@ public class SecurityConfig {
                 .addFilterBefore(myFilterSecurityInterceptor(), FilterSecurityInterceptor.class);
 */
 
+        http
+                .csrf().disable();
         return http.build();
     }
 
