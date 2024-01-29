@@ -28,6 +28,11 @@ public class Board {
         return board;
     }
 
+    public void updateBoard(String title, String content){
+        this.title = title;
+        this.content = content;
+    }
+
     @Override
     public String toString() {
         return "Board{" +

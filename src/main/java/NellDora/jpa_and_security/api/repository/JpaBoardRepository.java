@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 @Repository
 @Transactional
@@ -27,8 +28,22 @@ public class JpaBoardRepository implements BoardRepository{
 
     @Override
     public Board findByTitle(String title) {
-        String jpql = "select * from board as b where b.title = :title";
-        Board board = em.createQuery(jpql, Board.class).setParameter(title,title).getSingleResult();
-        return board;
+        String jpql = "select b from Board b where b.title = :title";
+        TypedQuery<Board> query = em.createQuery(jpql, Board.class);
+        query.setParameter("title",title);
+        return query.getSingleResult();
     }
+
+    @Override
+    public Board findById(int id) {
+        return em.find(Board.class, id);
+    }
+
+    @Override
+    public String delete(int id) {
+        String jpql = "delete from Board b where b.boardNo = :id";
+        em.createQuery(jpql).setParameter("id", id).executeUpdate();
+        return "success";
+    }
+
 }

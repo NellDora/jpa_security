@@ -19,4 +19,17 @@ public class BoardService {
     public Board findByTitle(String title){
         return boardRepository.findByTitle(title);
     }
+
+    public Board findById(int id){
+        return boardRepository.findById(id);
+    }
+
+    public void updateBoard(int id,String title, String content){
+        Board findBoard =boardRepository.findById(id);
+        findBoard.updateBoard(title, content);
+    }
+
+    public String deleteBoard(int id){
+        return boardRepository.delete(id);
+    }
 }
