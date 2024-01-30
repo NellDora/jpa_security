@@ -7,6 +7,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequiredArgsConstructor
 @Slf4j
@@ -46,4 +49,17 @@ public class BoardApiController {
     public String deleteBoardResponse(@PathVariable("boardNo") int boardNo){
         return boardService.deleteBoard(boardNo);
     }
+
+    @GetMapping("/boards")
+    public List<BoardDTO> searchBoards(){
+        List<Board> board = boardService.findAll();
+        List<BoardDTO> bdto = board.stream().map(o-> new BoardDTO(o)).collect(Collectors.toList());
+        return bdto;
+    }
+
+    /*
+    생각해볼 것
+    다른 웹에서 API 주소로 접속했을 때에는 굉장히 취약한 구조임
+
+     */
 }

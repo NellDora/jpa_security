@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -46,4 +47,11 @@ public class JpaBoardRepository implements BoardRepository{
         return "success";
     }
 
+    @Override
+    public List<Board> findAll() {
+        String jpql = "select b from Board b";
+        TypedQuery<Board> query = em.createQuery(jpql, Board.class);
+        List<Board> result = query.getResultList();
+        return result;
+    }
 }

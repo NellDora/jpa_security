@@ -6,6 +6,8 @@ import NellDora.jpa_and_security.api.repository.JpaBoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class BoardService {
@@ -31,5 +33,9 @@ public class BoardService {
 
     public String deleteBoard(int id){
         return boardRepository.delete(id);
+    }
+
+    public List<Board> findAll(){
+        return boardRepository.findAll();
     }
 }

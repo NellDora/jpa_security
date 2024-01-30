@@ -2,6 +2,8 @@ package NellDora.jpa_and_security.api.repository;
 
 import NellDora.jpa_and_security.api.domain.Board;
 
+import java.util.List;
+
 public interface BoardRepository {
 
     public void save(Board board);
@@ -11,4 +13,6 @@ public interface BoardRepository {
     public Board findById(int id);
 
     public String delete(int id);
+
+    public List<Board> findAll();
 }
